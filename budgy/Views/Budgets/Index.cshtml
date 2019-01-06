@@ -1,0 +1,45 @@
+﻿@model IEnumerable<budgy.Models.Budget>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Indkomst)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Indkomst)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BudgetId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BudgetId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BudgetId })
+        </td>
+    </tr>
+}
+
+</table>

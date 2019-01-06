@@ -1,0 +1,42 @@
+﻿@model budgy.Models.Budget
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Budget</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Indkomst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Indkomst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BudgetId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Budgy</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="col-md-12 main-content">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            
+                
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    
+                    <div class="navbar-header">
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                                <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                            </ul>
+                        </div>
+                        <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Budgy</a>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a asp-area="" asp-controller="Home" asp-action="Index">Hjælp</a></li>
+                                <li><a asp-area="" asp-controller="Home" asp-action="About">Info</a></li>
+                            </ul>
+                        </div>                    
+                    </div>
+                
+            
+        </nav>
+
+        <h1 id="main-title">DIN BUDGET <br />BUDDY</h1>
+        @*<h3 id="main-text">Vi ved, at et godt budget kan have stor betydning hvad end du er studerende, drømmer om ny bil eller du skal lave din første større investering i fast ejendom. Derfor har vi lavet et værktøj, der kan hjælpe dig med at få styr på økonomien</h3>*@
+        <h3 id="main-text">Lad os beregne dit rådighedsbeløb udfra dine indtægter og udgifter <span class="glyphicon glyphicon-chevron-down"></span></h3>
+
+    </div>
+    <div class="col-md-12 body-content">
+        @RenderBody()
+
+
+    </div>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Budgy</p>
+    </footer>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+<script>
+    $(document).ready(function() {
+
+  $(".toggle-accordion").on("click", function() {
+    var accordionId = $(this).attr("accordion-id"),
+      numPanelOpen = $(accordionId + ' .collapse.in').length;
+    
+    $(this).toggleClass("active");
+
+    if (numPanelOpen == 0) {
+      openAllPanels(accordionId);
+    } else {
+      closeAllPanels(accordionId);
+    }
+  })
+
+  openAllPanels = function(aId) {
+    console.log("setAllPanelOpen");
+    $(aId + ' .panel-collapse:not(".in")').collapse('show');
+  }
+  closeAllPanels = function(aId) {
+    console.log("setAllPanelclose");
+    $(aId + ' .panel-collapse.in').collapse('hide');
+  }
+     
+});
+</script>
+</html>

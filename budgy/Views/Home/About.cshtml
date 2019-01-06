@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p>
+<p>Vi ved at at et godt budget kan have stor betydning om du er studerende, spare til ny bil eller du skal lave din første invistering i fast ejendom. Derfor har vi lavet en calculator for at hjælpe dig med beregninger</p>
+
+@using (Html.BeginForm())
+
+
+{
+<div class="form-horizontal">
+    <h4>Budget</h4>
+
+    @{ int price = 50;}
+
+
+    @{ <p> @price</p> }
+    @{
+        int value1;
+        int value2;
+        int value3;
+        int value4;
+        int value5;
+        bool isChecked;
+
+        int Return;
+        int Return2 = 0;
+
+        int.TryParse(Request["Indkomst"], out value1);
+        int.TryParse(Request["Hus"], out value2);
+        int.TryParse(Request["Forbrug"], out value3);
+        int.TryParse(Request["Bil"], out value4);
+        int.TryParse(Request["Forsikring"], out value4);
+        int.TryParse(Request["Forsikring"], out value5);
+
+
+
+        isChecked = Request["Check"].IsEmpty();
+
+        Return = value1 - (value2 + value3 + value4);
+
+    }
+    <div class="col-lg-10">
+        <label class=" success">Beregn for år i stedet for måned</label>
+        <input type="checkbox" value="@isChecked" name="Check" />
+    </div>
+    <div class="col-lg-10">
+        <label>Indkomst </label>
+        <input type="number" name="Indkomst" value="@value1" />
+    </div>
+    <div class="col-lg-10">
+        <label>Hus/Leje </label>
+        <input type="number" name="Hus" value="@value2" />
+    </div>
+    <div class="col-lg-10">
+        <label>Forbrug </label>
+        <input type="number" name="Forbrug" value="@value3" />
+    </div>
+    <div class="col-lg-10">
+        <label>Bil</label>
+        <input type="number" name="Bil" value="@value4" />
+    </div>
+    <div class="col-lg-10">
+        <label>Forsikring</label>
+        <input type="number" name="Forsikring" value="@value5" />
+    </div>
+
+    <div class="col-lg-10">
+        <input type="submit" class="success" value="submit" />
+    </div>
+    <div class="col-lg-10">
+        <label>Dit Budget at gøre godt med</label>
+        <h2>@Return</h2>
+    </div>
+
+</div>
+
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
